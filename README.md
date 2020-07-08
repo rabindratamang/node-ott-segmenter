@@ -1,3 +1,3 @@
 # OTT Segmenter
 
-Node util to segment OTT playlist to multiple subevents.
+Node util to segment OTT playlist into multiple subevents.
