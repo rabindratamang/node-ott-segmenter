@@ -7,7 +7,7 @@ const getParsedManifest = (manifest) => {
   return parser.manifest;
 };
 
-const getSubEvents = (parsedManifest, maximumSubEventDuration) => {
+const printSubEvents = (parsedManifest, maximumSubEventDuration) => {
   const segments = parsedManifest.segments;
   let totalDuration = 0;
   let hasDiscontinuity = false;
@@ -46,5 +46,5 @@ const getSubEvents = (parsedManifest, maximumSubEventDuration) => {
 
 module.exports = {
   getParsedManifest,
-  getSubEvents,
+  printSubEvents,
 };

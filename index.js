@@ -1,4 +1,4 @@
-const { getParsedManifest, getSubEvents } = require("./src/m3u8-utils");
+const { getParsedManifest, printSubEvents } = require("./src/m3u8-utils");
 
 let manifest = `#EXTM3U
     #EXT-X-VERSION:3
@@ -45,4 +45,4 @@ let manifest = `#EXTM3U
 
 let parsedManifest = getParsedManifest(manifest);
 const maximumSubEventDuration = 30;
-getSubEvents(parsedManifest, maximumSubEventDuration);
+printSubEvents(parsedManifest, maximumSubEventDuration);
