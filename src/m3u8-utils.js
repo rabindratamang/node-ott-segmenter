@@ -11,13 +11,13 @@ const printSubEvents = (parsedManifest, maximumSubEventDuration) => {
   const segments = parsedManifest.segments;
   let totalDuration = 0;
   let hasDiscontinuity = false;
-  let isStarted = false;
+  let hasStarted = false;
 
   segments.forEach((segment) => {
     if (hasDiscontinuity && segment.hasOwnProperty("discontinuity")) {
       console.log(`END ${segment.uri} ${totalDuration}`);
       totalDuration = 0;
-      isStarted = false;
+      hasStarted = false;
       hasDiscontinuity = false;
       return;
     }
@@ -25,15 +25,15 @@ const printSubEvents = (parsedManifest, maximumSubEventDuration) => {
     if (
       segment.hasOwnProperty("discontinuity") &&
       segment.discontinuity &&
-      !isStarted &&
+      !hasStarted &&
       !hasDiscontinuity
     ) {
-      isStarted = true;
+      hasStarted = true;
       hasDiscontinuity = true;
       console.log(`START ${segment.uri}`);
     }
 
-    if (isStarted) {
+    if (hasStarted) {
       totalDuration += segment.duration;
       if (totalDuration >= maximumSubEventDuration) {
         console.log(`END ${segment.uri} ${totalDuration}`);
