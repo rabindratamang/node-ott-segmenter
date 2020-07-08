@@ -1,4 +1,4 @@
-const { getParsedManifest, getSubEvents } = require("./src/utils");
+const { getParsedManifest, getSubEvents } = require("./src/m3u8-utils");
 
 let manifest = `#EXTM3U
     #EXT-X-VERSION:3
