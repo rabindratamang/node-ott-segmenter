@@ -35,7 +35,6 @@ const getSubEvents = (parsedManifest, maximumSubEventDuration) => {
       totalDuration += segment.duration;
       if (totalDuration >= maximumSubEventDuration) {
         console.log(`END ${segment.uri} ${totalDuration}`);
-        isStarted = true;
         totalDuration = 0;
         console.log(`START ${segment.uri}`);
       }
