@@ -13,7 +13,7 @@ const printSubEvents = (parsedManifest, maximumSubEventDuration) => {
   let hasDiscontinuity = false;
   let hasStarted = false;
 
-  segments.forEach((segment) => {
+  const evaluateSegment = (segment) => {
     //If end of discontinuity print end the event and reset all flags and skip current loop
     if (hasDiscontinuity && segment.hasOwnProperty("discontinuity")) {
       console.log(`END ${segment.uri} ${totalDuration}`);
@@ -43,6 +43,10 @@ const printSubEvents = (parsedManifest, maximumSubEventDuration) => {
         console.log(`START ${segment.uri}`);
       }
     }
+  };
+
+  segments.forEach((segment) => {
+    evaluateSegment(segment);
   });
 };
 
