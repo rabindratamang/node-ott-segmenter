@@ -14,6 +14,13 @@ const getSubEvents = (parsedManifest, maximumSubEventDuration) => {
   let isStarted = false;
 
   segments.forEach((segment) => {
+    if (hasDiscontinuity && segment.hasOwnProperty("discontinuity")) {
+      console.log(`END ${segment.uri} ${totalDuration}`);
+      totalDuration = 0;
+      isStarted = false;
+      hasDiscontinuity = false;
+    }
+
     if (
       segment.hasOwnProperty("discontinuity") &&
       segment.discontinuity &&
@@ -26,22 +33,14 @@ const getSubEvents = (parsedManifest, maximumSubEventDuration) => {
 
     if (isStarted) {
       totalDuration += segment.duration;
-    }
-
-    if (totalDuration >= maximumSubEventDuration) {
-      console.log(`END ${segment.uri} ${totalDuration}`);
-      isStarted = true;
-      totalDuration = 0;
+      if (totalDuration >= maximumSubEventDuration) {
+        console.log(`END ${segment.uri} ${totalDuration}`);
+        isStarted = true;
+        totalDuration = 0;
+        console.log(`START ${segment.uri}`);
+      }
     }
   });
-
-  //   segments.map((segment) => {
-  //     getEvent(segments, maximumSubEventDuration);
-  //   });
-};
-
-const getEvent = (segment, maximumSubEventDuration) => {
-  return segment;
 };
 
 module.exports = {
