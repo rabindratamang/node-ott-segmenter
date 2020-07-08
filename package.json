@@ -1,0 +1,15 @@
+{
+  "name": "ott-segmenter",
+  "version": "1.0.0",
+  "description": "Ott sub event segmenter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Rabindra Tamang",
+  "license": "ISC",
+  "dependencies": {
+    "m3u8-parser": "^4.4.0"
+  }
+}
