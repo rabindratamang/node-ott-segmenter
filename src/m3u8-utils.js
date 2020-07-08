@@ -18,6 +18,8 @@ const getSubEvents = (parsedManifest, maximumSubEventDuration) => {
       console.log(`END ${segment.uri} ${totalDuration}`);
       totalDuration = 0;
       isStarted = false;
+      hasDiscontinuity = false;
+      return;
     }
 
     if (
