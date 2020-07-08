@@ -45,4 +45,4 @@ let manifest = `#EXTM3U
 
 let parsedManifest = getParsedManifest(manifest);
 const maximumSubEventDuration = 30;
-getSubEvents(parsedManifest, 30);
+getSubEvents(parsedManifest, maximumSubEventDuration);
